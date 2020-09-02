@@ -1,0 +1,38 @@
+<div class="content">
+  <h1>SpaceX Launch Programs</h1>
+  <div class="samerow">
+    <div class="filters_card">
+      <span class="filter">Filters</span>
+      <div class="filter_headers">Launch Year</div>
+      <div class="year_button">
+        <button *ngFor="let year of yearsArray" class="mb-1" (click)="yearFilter(year)">{{year}}</button>
+        <!-- <button>2007</button> -->
+      </div>
+      <div class="filter_headers">Successful Launch</div>
+      <div class="year_button">
+        <button (click)="getLaunch(true)">True</button>
+        <button (click)="getLaunch(false)">False</button>
+      </div>
+      <div class="filter_headers">Successful Landing</div>
+      <div class="year_button">
+        <button (click)="getLand(true)">True</button>
+        <button (click)="getLand(false)">False</button>
+      </div>
+    </div>
+
+    <div class="grid-container" >
+      <div class="card" *ngFor="let res of result">
+        <img [src]="res.links.mission_patch" class="image_size">
+        <p class="image_name">{{res.mission_name}} #{{res.flight_number}}</p>
+        <p><strong>Mission Ids:</strong><span class="image_desc"> {{res.mission_id}}</span></p>
+        <p><strong>Launch Year:</strong><span class="image_desc"> {{res.launch_year}}</span></p>
+        <p><strong>Successful Launch:</strong><span class="image_desc"> {{res.launch_success}}</span></p>
+        <p><strong>Successful Landing:</strong><span class="image_desc">{{res.rocket.first_stage.cores[0].land_success}}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="developer"><strong>Developed by:</strong> Nanda Prasad</div>
+
+</div>
+<router-outlet></router-outlet>
